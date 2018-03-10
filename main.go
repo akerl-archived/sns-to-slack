@@ -38,7 +38,7 @@ func loadConfig() {
 		return
 	}
 
-	c := config{}
+	c := configFile{}
 	err = yaml.Unmarshal(obj, &c)
 	if err != nil {
 		log.Print(err)
