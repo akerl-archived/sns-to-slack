@@ -1,0 +1,3 @@
+PACKAGE = sns-to-slack
+NAMESPACE = github.com/akerl
+OSLIST = linux
