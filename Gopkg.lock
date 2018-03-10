@@ -7,8 +7,8 @@
     "cloudwatch",
     "s3"
   ]
-  revision = "487455b8e329c09c72578b7b1751a2b1c7abaf70"
-  version = "0.0.7"
+  revision = "25cffe466738cebe545aa1809773a5dce39680c5"
+  version = "0.0.8"
 
 [[projects]]
   name = "github.com/aws/aws-lambda-go"
