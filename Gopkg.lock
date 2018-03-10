@@ -3,14 +3,16 @@
 
 [[projects]]
   name = "github.com/akerl/go-lambda"
-  packages = ["s3"]
-  revision = "f49449a81081d810597f99872a554d7b41e088e1"
-  version = "0.0.4"
+  packages = [
+    "cloudwatch",
+    "s3"
+  ]
+  revision = "38628da1c177933161cd3b69ca48131dbbe35349"
+  version = "0.0.6"
 
 [[projects]]
   name = "github.com/aws/aws-lambda-go"
   packages = [
-    "events",
     "lambda",
     "lambda/messages",
     "lambdacontext"
@@ -71,6 +73,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "8354364215631fefd5cd02fc8750184bfa0358ef1a18b138d280a96a8b1c7d6e"
+  inputs-digest = "4e4bedecf8d3a9eacd2920b40a1e6b22433ad77eb538cad0af007e7699783a28"
   solver-name = "gps-cdcl"
   solver-version = 1
