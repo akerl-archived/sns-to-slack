@@ -7,8 +7,8 @@
     "cloudwatch",
     "s3"
   ]
-  revision = "972b51e60a0dd1d2fd1606567553333b2689dd89"
-  version = "0.0.10"
+  revision = "acb2a9e28fcf9b04acf2d88883d4bb99f0a7ea21"
+  version = "0.0.11"
 
 [[projects]]
   name = "github.com/aws/aws-lambda-go"
@@ -51,14 +51,14 @@
     "service/s3",
     "service/sts"
   ]
-  revision = "bb206ce0d6a50da7807694a823aed5c601c57ce0"
-  version = "v1.13.23"
+  revision = "4f5d298bd2dcb34b06d944594f458d1f77ac4d66"
+  version = "v1.13.42"
 
 [[projects]]
   name = "github.com/go-ini/ini"
   packages = ["."]
-  revision = "6333e38ac20b8949a8dd68baa3650f4dee8f39f0"
-  version = "v1.33.0"
+  revision = "6529cf7c58879c08d927016dde4477f18a0634cb"
+  version = "v1.36.0"
 
 [[projects]]
   name = "github.com/jmespath/go-jmespath"
