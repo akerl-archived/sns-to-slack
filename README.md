@@ -1,3 +1,5 @@
+**Deprecation Notice:** This project has been deprecated in favor of using AWS's built-in Budgeting feature
+
 sns-to-slack
 =========
 
