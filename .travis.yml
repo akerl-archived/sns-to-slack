@@ -1,0 +1,22 @@
+sudo: required
+dist: trusty
+services:
+- docker
+env:
+  global:
+  - PKGFORGE_STATEFILE=/tmp/pkgforge
+  - BUCKET=akerl-sns-to-slack
+script: make
+deploy:
+  provider: script
+  script:
+  - make release || travis_terminate 1
+  - aws s3 cp pkg/payload.zip "s3://$BUCKET/lambdas/payload-$TRAVIS_TAG.zip" || travis_terminate
+    1
+  skip_cleanup: true
+  on:
+    tags: true
+notifications:
+  email: false
+  slack:
+    secure: CIWPjeq4MO5/24XqrZTd6u/OHl0OwQOklsJge2UnXVE2KtRLSemA+uvtSCtxTdyoer3TOEoQJ9nFbTp1mdeHqpNPMqhQ0lbn7usrPxWEnwVVmDi1/7tAgmrgt+upYPnXF5e5xPcmCWxuCGoPOKzKWVYpGlWeTiO7fcyDNfL0D3GQ8YuYjO+i144Nlk9aAFoSBe9V6eqsoU1AiTaBxW9dKTEMxRI1Bg1TT4VjcuzpWIuLp73GKA5Itbrr0Se3FUyFmkuynxCtivAb/SBQ2b6uKO8R/DG8I5G++HUohPiTNaZQDRcc2QRR1dBanwBHOKYEIEPRVaTaY1ncnMqWoLnduw05UL6iqE7AagLxl+3v+3rFin6omz4IhO6xtyivUzr6FmAgohbAeCBShDDZ60Bd4GcLGWlQsrcD9IfVIZE3sTh3t9a4PXguL+A6TFl6NvCBo+41Zjv75wvd+VbwwkTMNb7HXgmCBaP4WWsO1P492C1Aoah2yRhRpROELFhU/8ZnGhGPD4ii21Bx7Ou4P+fv2vQoWbIP0jbxqhvao2YR1cLLfqxY4k2BNn1wvvrkmLL5spXoQhYqgsSUUQkWHt02tzLM7iCTRHB5wLTmyLb5d5nbqfw9Ik5yYC1w+pMSI1f9r4KXYlSckHzY3JnvnCVHhNPpYtv2DMy1QQNtEx0L7h4=
