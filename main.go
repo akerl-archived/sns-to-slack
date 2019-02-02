@@ -29,7 +29,7 @@ func (c *configFile) lookup(name string) (alarmConfig, error) {
 	if ok {
 		return conf, nil
 	}
-	return conf, fmt.Errorf("No config found: %s", name)
+	return conf, fmt.Errorf("no config found: %s", name)
 }
 
 type alarmConfig struct {
@@ -52,7 +52,7 @@ type slackMsg struct {
 
 func handler(e cloudwatch.SNSEvent) error {
 	if config == nil {
-		return fmt.Errorf("Config failed to load")
+		return fmt.Errorf("config failed to load")
 	}
 
 	for _, r := range e.Records {
