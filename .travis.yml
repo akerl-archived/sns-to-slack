@@ -6,15 +6,15 @@ env:
   global:
   - PKGFORGE_STATEFILE=/tmp/pkgforge
   - BUCKET=akerl-sns-to-slack
+  - AWS_DEFAULT_REGION=us-east-1
   - secure: YazW+88XHqn0fcKpol6+GkfrWEHD8BpMcxQAzmU59HBsRefjNOE43MqcldDiR0NmD/EvB24zcszrK+T4VpfIO0HPnAZjQ+YjFr/d+zTY1SGgPj7PTmLizKLwvcB9ON5OSNneWUPK9qor5SfWlU/6Bx5006pKPxywT5Zdl0ihEeUZeTTdZvbolJlgsSjHHqsi8HcEyj8N2f8YtfXlL/O+s24tR9NI6WX+oRlThISV2QivFHFHLQzVFjfABmIb91bEHnm9C6vvIh9IZDkSl0dgF1pkMF6BLmFI0UelDGpQhNBdbMo1NZeRWvGh1U3gZ5kkmkW63zGS+rMjtlf75cfBI0MoJdho7oE3F1ywt9tJ5r5lKUJnlkFnw1cl5Q1jmAg2x5EAomhMFTsKWTJRHLyjmZkQdPr9O755YbqZcM6jzchyWeTp//ZzfCWMi1ZVN4WzbrTFfsdLuUAjh5XocMK2K9i3AF1G+Cg0uwtmcNL0EjQQMoJ2mFjQNEb5Eh5+ZnmfP3v3J1AfFr0mqmqLYRKjuTapnjuw2gQTNmXyGNMNP4GgFrsIBwDKyBl7BgSQJT0xA+DqAiJsEwJ5wk6l7plm7K0b8fZDjXM3ypAnZTIDUOUEeaUBkjKARDzerqBB1WptRq5QrULNo9TPR/JNqzzatyzyxhpGPv6r75GbQKOYk0M=
   - secure: TmzdGu3YMf7ov7QcxB6PMWXdZa7LJXqG1JHRa1xSGel92eQz7swWCA5ZvOZLv/e8ApCfAnRGTDrviSRyOO4pXhWHAdSH/fzVJFzc/NBKK8y1t9EGqIFEMLc6UU7sCaFQYhYtFuEXilXEhxADswXI68RnLpYpemGCkax3B0NaT6Voj9qIZfgu3JhIerr/OPbFY2ydcZ9eu8ceV/hPrQ5iZYjCbKvyX6iquQy6Y5Zrh0IgXxWYoJ/VHH7CpnRN8R07dkvKdN4Pyz8YyDuSb2JzngntJ9Ad1pJLuBQT4QyPITTPLrcfAiRO08Fj1P3F8BZEb4/UlGKTrqeB9vpmEfRfjHU+G8pUEJoq6Q2hT4GVk0FkuPxqhosYMNwUV+vgggFSztID5dx5AYLT2Hstip6gqGT6Tp/opax/I9A57RHLUCPjhpfr0KpzstalUrOWA9E4lKqzJSEWAowsOUxpxP+rAGLZFkVG9+GxqBXFQSEAq49zPJd+dXi1SXvPoN38LhqhxIv2Qxyr9mv5j8Vq2tAJggIH79G47RZ5yECccvUD/aJfPAwiRGZmkddcV35dK2e6btBEyjqP+0iBQKAPw3GhppZkO1aIBdiH3a/SYPmGS2qgS0ufeAM8Wb6GFqXgsWOEcfduf2WuFnAbF4iR9Aqu3VOR8leY/HqbVOlP9UMF7Ac=
 script: make
 deploy:
   provider: script
   script:
-  - make release || travis_terminate 1
-  - aws s3 cp pkg/payload.zip "s3://$BUCKET/lambdas/payload-$TRAVIS_TAG.zip" || travis_terminate
-    1
+  - make release
+  - aws s3 cp pkg/payload.zip "s3://$BUCKET/lambdas/payload-$TRAVIS_TAG.zip"
   skip_cleanup: true
   on:
     tags: true
